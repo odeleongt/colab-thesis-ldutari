@@ -15,4 +15,6 @@
 *.jp*g
 *.png
 *.tif*
-
+*.doc*
+*.ppt*
+*.od*
