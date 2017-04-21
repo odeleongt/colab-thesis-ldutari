@@ -3,3 +3,16 @@
 .Rhistory
 .RData
 .Ruserdata
+
+# Ignore raw datasets
+*.xls*
+*.RData
+*.zip
+
+# Ignore output
+*.html
+*.pdf
+*.jp*g
+*.png
+*.tif*
+
