@@ -6,9 +6,6 @@
 # Setup environment ----
 #------------------------------------------------------------------------------*
 
-# Load used packages
-library(package = "readxl")
-library(package = "tidyverse")
 
 
 
