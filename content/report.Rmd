@@ -16,3 +16,61 @@ knitr::opts_knit$set(root.dir = "..")
 # load data
 source(file = "scripts/load-data.R")
 ```
+
+
+
+# Lutzomyia diversity
+
+## Data description
+
+### Sex of collected specimens
+
+```{r lutzomyia-sex-description}
+lutzomyia_sex %>%
+  mutate(
+    sex = recode(
+      sex,
+      f = "female",
+      m = "male"
+    )
+  ) %>%
+  spread(key = sex, value = total_indivituals) %>%
+  set_names(
+    gsub("(^| )([a-z])", "\\1\\U\\2", gsub("_", " ", names(.)), perl = TRUE)
+  ) %>%
+  knitr::kable(
+    caption = paste(
+      "**Table 1:**",
+      "Total individuals collected by species and sex" 
+    )
+  )
+```
+
+
+### Specimens by site
+
+```{r lutzomyia-site-description}
+lutzomyia %>%
+  group_by(species, site) %>%
+  summarize(
+    n = n(),
+    mean = mean(count),
+    text = paste0(mean, " (", n, ")")
+  ) %>%
+  select(species, site, text) %>%
+  spread(key = site, value = text) %>%
+  set_names(
+    gsub("(^| )([a-z])", "\\1\\U\\2", gsub("_", " ", names(.)), perl = TRUE)
+  ) %>%
+  set_names(
+    ifelse(names(.) == "Species", names(.), paste0(names(.), ", mean (n)"))
+  ) %>%
+  knitr::kable(
+    caption = paste(
+      "**Table 2:**",
+      "Mean number of collected individuals by species and forest fragmentation"
+    )
+  )
+```
+
+
