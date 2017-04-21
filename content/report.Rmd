@@ -74,3 +74,19 @@ lutzomyia %>%
 ```
 
 
+## Statistical analysis
+
+### Species relative abundance between canopy and underbrush
+
+> Pending vertical strata data
+
+```{r vertical-relative-abundance}
+#------------------------------------------------------------------------------*
+# ldutari:
+# Abundancia relative de especies mas abundantes entre dosel y el sotobosque,
+# utilizando T-test y U de Mann- Whitney
+#------------------------------------------------------------------------------*
+```
+
+
+
