@@ -139,13 +139,16 @@ trap_permutations <- lutzomyia %>%
 
 
 ```{r cummulative-species}
-# Cummulative curve using traps as effort
-cum_curve_traps <- lutzomyia %>%
+# Number of species collected per trap per site
+collected_species <- lutzomyia %>%
   # Number of species by trap
   group_by(site, trap) %>%
   summarize(
     species = sum(count > 0)
-  ) %>%
+  )
+
+# Cummulative curve using traps as effort
+cum_curve_traps <- collected_species %>%
   # Bind with trap permutations
   right_join(trap_permutations) %>%
   # Cummulative species by number of traps
@@ -162,6 +165,32 @@ cum_curve_traps <- lutzomyia %>%
   ungroup
 ```
 
+
+#### Heterogeneity
+
+```{r aov-heterogeneity}
+# aov model
+sites_aov <- collected_species %>%
+    aov(
+        formula = species ~ site
+    )
+
+print(sites_aov)
+print(summary(sites_aov))
+```
+
+
+A one-way analysis of variance (ANOVA) was used to test for heterogeneity in
+the number of species collected per trap between the sites,
+and found to be not significantly heterogeneous
+(one-way anova,
+F~`r paste(summary(sites_aov)[[1]]$Df, collapse = ",")`~ =
+`r signif(na.omit(summary(sites_aov)[[1]][,"F value"]), 2)`,
+p = `r signif(na.omit(summary(sites_aov)[[1]][,"Pr(>F)"]), 2)`).
+
+
+
+#### Cummulative species curve
 
 **Figure 1** shows the cummulative species curve per site given the number of
 traps (Jimemez 2003).
