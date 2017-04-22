@@ -30,6 +30,12 @@ source(file = "scripts/load-data.R")
 ```
 
 
+# Statistical analysis
+
+Statistical analysis performed using R v3.4.0 (R Core Team 2017).
+
+
+
 
 # Lutzomyia diversity 2015
 
@@ -86,7 +92,8 @@ lutzomyia %>%
 ```
 
 
-## Statistical analysis
+## Results
+
 
 ### Diversity
 
@@ -185,7 +192,7 @@ cum_curve_traps %>%
 ## Data description
 
 
-## Statistical analysis
+## Results
 
 ### Species relative abundance between canopy and underbrush
 
@@ -200,3 +207,8 @@ cum_curve_traps %>%
 ```
 
 
+
+# References
+
+R Core Team (2017). R: A language and environment for statistical computing. R Foundation for
+  Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
