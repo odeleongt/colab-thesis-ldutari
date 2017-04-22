@@ -41,7 +41,13 @@ Statistical analysis performed using R v3.4.0 (R Core Team 2017).
 
 # Lutzomyia diversity 2015
 
+Based on data from 2015 collections, including:
+site, trap, species and number of individuals.
+
+
 ## Data description
+
+Follows some tables describing the data, for reference.
 
 ### Sex of collected specimens
 
@@ -96,6 +102,7 @@ lutzomyia %>%
 
 ## Results
 
+Follow results for the statistical analysis.
 
 ### Diversity
 
@@ -156,6 +163,13 @@ cum_curve_traps <- lutzomyia %>%
 ```
 
 
+**Figure 1** shows the cummulative species curve per site given the number of
+traps (Jimemez 2003).
+The curve for each site was calculated by averaging the number of detected
+species accumulated when adding traps,
+over all the possible permutations for the order in which each one of the 5
+traps is added to the calculation.
+
 
 ```{r cummulative-curve-traps}
 # Plot cummulative curve
@@ -212,5 +226,9 @@ cum_curve_traps %>%
 
 # References
 
-R Core Team (2017). R: A language and environment for statistical computing. R Foundation for
-  Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
+Jimenez, A (2003). Las curvas de acumulación de especies y la necesidad de
+evaluar la calidad de los inventarios biológicos. Revista Ibérica de Aracnología.
+Vol. 8, 31-XII-2003, 151-161.
+
+R Core Team (2017). R: A language and environment for statistical computing.
+R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
