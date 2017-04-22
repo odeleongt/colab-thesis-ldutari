@@ -103,3 +103,34 @@ lutzomyia %>%
 
 
 
+### Diversity
+
+```{r prepare-diversity-data}
+#------------------------------------------------------------------------------*
+# ldutari:
+# Indices de diversidad y curvas de acumulacion
+# (los indices pueden ser Alpha de Fisher, Margalef, Shannon, Simpson,
+# Berger-Parker)
+#------------------------------------------------------------------------------*
+
+# All trap order permutations
+trap_permutations <- lutzomyia %>%
+  # For each site and its traps
+  select(site, trap) %>%
+  split(.$site) %>%
+  map(unique) %>%
+  # Calculate all permutations of traps (i.e. simulate order of use)
+  map(~combinat::permn(.x$trap)) %>%
+  # Put in nice rectangular structure
+  map(simplify2array) %>%
+  map(t) %>%
+  map(as_data_frame) %>%
+  # Combine everything
+  bind_rows(.id = "site") %>%
+  group_by(site) %>%
+  mutate(permutation = 1:n()) %>%
+  # Use tidy structure
+  set_names(gsub("V", "", names(.))) %>%
+  gather(key = effort, value = trap, convert = TRUE, -site, -permutation) %>%
+  arrange(site, permutation)
+```
