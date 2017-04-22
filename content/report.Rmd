@@ -160,3 +160,36 @@ cum_curve_traps <- lutzomyia %>%
   ) %>%
   ungroup
 ```
+
+
+
+```{r cummulative-curve-traps}
+# Plot cummulative curve
+cum_curve_traps %>%
+  mutate(
+    site = gsub("(^| )([a-z])", "\\1\\U\\2", gsub("_", " ", site), perl = TRUE),
+    p1sd = species_mean + species_sd,
+    m1sd = species_mean - species_sd
+  ) %>%
+  ggplot(aes(x = effort, y = species_mean, color = site)) +
+  geom_line() +
+  # geom_line(aes(y = p1sd), linetype = "dashed") +
+  # geom_line(aes(y = m1sd), linetype = "dashed") +
+  labs(
+    title = paste(
+      "Figure 1: Cummulative species curve per site",
+      "by number of traps.",
+      sep = "\n"
+    ),
+    subtitle = paste(
+      "Number of species calculated by averaging the cummulative species",
+      "over all permutations of the traps in each site.",
+      sep = "\n"
+    ),
+    x = "Number of traps",
+    y = "Number of observed species",
+    color = "Site"
+  ) +
+  coord_fixed(ratio = 1/10)
+```
+
