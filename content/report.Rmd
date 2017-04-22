@@ -10,6 +10,15 @@ output:
 library(package = "readxl")
 library(package = "tidyverse")
 
+# configure ggplot2 theme
+theme_set(
+  theme_classic() +
+    theme(
+      title = element_text(face = "bold"),
+      plot.subtitle = element_text(face = "plain")
+    )
+)
+
 # configure knitting
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 knitr::opts_knit$set(root.dir = "..")
