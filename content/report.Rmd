@@ -30,6 +30,8 @@ source(file = "scripts/load-data.R")
 ```
 
 
+**Last updated:** `r substr(Sys.time(), 1, 19)`
+
 # Statistical analysis
 
 Statistical analysis performed using R v3.4.0 (R Core Team 2017).
