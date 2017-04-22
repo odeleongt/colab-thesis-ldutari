@@ -31,7 +31,7 @@ source(file = "scripts/load-data.R")
 
 
 
-# Lutzomyia diversity
+# Lutzomyia diversity 2015
 
 ## Data description
 
@@ -87,20 +87,6 @@ lutzomyia %>%
 
 
 ## Statistical analysis
-
-### Species relative abundance between canopy and underbrush
-
-> Pending vertical strata data
-
-```{r vertical-relative-abundance}
-#------------------------------------------------------------------------------*
-# ldutari:
-# Abundancia relative de especies mas abundantes entre dosel y el sotobosque,
-# utilizando T-test y U de Mann- Whitney
-#------------------------------------------------------------------------------*
-```
-
-
 
 ### Diversity
 
@@ -191,4 +177,26 @@ cum_curve_traps %>%
   ) +
   coord_fixed(ratio = 1/10)
 ```
+
+
+
+# Lutzomyia diversity 2010-2014
+
+## Data description
+
+
+## Statistical analysis
+
+### Species relative abundance between canopy and underbrush
+
+> Pending vertical strata data
+
+```{r vertical-relative-abundance}
+#------------------------------------------------------------------------------*
+# ldutari:
+# Abundancia relative de especies mas abundantes entre dosel y el sotobosque,
+# utilizando T-test y U de Mann- Whitney
+#------------------------------------------------------------------------------*
+```
+
 
