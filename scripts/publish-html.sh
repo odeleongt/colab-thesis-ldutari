@@ -24,3 +24,6 @@ git checkout feature/species-diversity-report
 git push origin gh-pages
 git push origin feature/species-diversity-report
 
+# Report
+ssmtp larissad20_7@hotmail.com < data/notification
+
