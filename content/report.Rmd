@@ -134,3 +134,29 @@ trap_permutations <- lutzomyia %>%
   gather(key = effort, value = trap, convert = TRUE, -site, -permutation) %>%
   arrange(site, permutation)
 ```
+
+
+
+```{r cummulative-species}
+# Cummulative curve using traps as effort
+cum_curve_traps <- lutzomyia %>%
+  # Number of species by trap
+  group_by(site, trap) %>%
+  summarize(
+    species = sum(count > 0)
+  ) %>%
+  # Bind with trap permutations
+  right_join(trap_permutations) %>%
+  # Cummulative species by number of traps
+  group_by(site, permutation) %>%
+  mutate(
+    cum_species = cumsum(species)
+  ) %>%
+  # Mean number of cummulative species by effort (effort = number of traps)
+  group_by(site, effort) %>%
+  summarize(
+    species_sd = sd(cum_species),
+    species_mean = mean(cum_species)
+  ) %>%
+  ungroup
+```
